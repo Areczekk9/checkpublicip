@@ -1,14 +1,6 @@
-var http = require('http');
-
 var net = require("net");
 
 var server = net.createServer();
-
-http.get({'host': 'api.ipify.org', 'port': 80, 'path': '/'}, function(resp) {
-  resp.on('data', function(ip) {
-    console.log("My public IP address is: " + ip);
-  });
-});
 
 server.on("connection", function (socket) {
     var remoteAddress = socket.remoteAddress + ":" + socket.remotePort;
